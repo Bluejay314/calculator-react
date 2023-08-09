@@ -2,5 +2,44 @@ html {
     font-size: 14px;
     --color-primary: #898989;
     ---color-secondary: #546886;
-    --color-tertiary: #
+    --color-tertiary: #80EFF6;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 1em 1.25em;
+    border-radius: 1em;
+    background-color: var(--color-primary);
+}
+
+
+.button-row button {
+    width: 2.5em;
+    aspect-ratio: 1;
+}
+
+#input-display {
+    width: 100%;
+    height: 1.5em;
+
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 0.5em;
 }

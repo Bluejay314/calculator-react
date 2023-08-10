@@ -26,9 +26,9 @@ function operatorClickEvent(event) {
             }
             break;
         case "-":
-            if(currentValue.length == 0 && !isNegative) {
+            if(currentValue.length == 0 && !isNegative)
                 isNegative = true;
-            }
+            
             else {
                 currentFunc = (a, b) => a - b;
                 total = currentValue;
@@ -36,6 +36,14 @@ function operatorClickEvent(event) {
             }
 
             inputDisplay.innerText += (" -");
+            break;
+        case "*":
+            if(currentValue.length != 0 && !currentFunc) {
+                currentFunc = (a, b) => a * b;
+                total = currentValue;
+                currentValue = "";
+                inputDisplay.innerText += (" x");
+            }
             break;
     }
     logdetails();
@@ -49,9 +57,6 @@ function equalsClickEvent() {
 
     if(typeof total == 'number' && !Number.isInteger(total))
         total = total.toFixed(2);
-
-    console.log(`typeof total: ${typeof total}`);
-    console.log(`typeof currentValue: ${typeof currentValue}`);
 
     currentValue = "";
     currentFunc = null;
@@ -74,8 +79,8 @@ function clearValues() {
 
 function logdetails() {
     console.log("------------------------")
-    console.log(`total: ${total}`)
-    console.log(`currentValue: ${currentValue}`)
+    console.log(`total: ${total} (${typeof total})`)
+    console.log(`currentValue: ${currentValue} (${typeof currentValue})`)
     console.log(`currentFunc: ${currentFunc}`)
 }
 

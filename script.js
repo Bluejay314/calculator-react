@@ -31,7 +31,7 @@ function operatorClickEvent(event) {
     switch(event.target.innerText) {
         case "+": setFunc((a, b) => a + b, operator); break;
         case "-":
-            // If 'currentValue' is empty, the number is flagged as negative
+            // If 'currentValue' is empty, the number is negative
             if(currentValue.length == 0) {
                 inputDisplay.innerText += " " + event.target.innerText;
                 currentValue += event.target.innerText;
@@ -43,13 +43,15 @@ function operatorClickEvent(event) {
         case "/": setFunc((a, b) => a / b, operator); break;
     }
 
+    // Utility function to avoid repetative code
     function setFunc(func, symbol) {
+        // set operator if we have a value to operate on and no operator has already been set.
         if(currentValue.length != 0 && !operation) {
             operation = func;
             total = parseFloat(currentValue);
             currentValue = "";
         }
-        else
+        else  
             willError = true;
 
         inputDisplay.innerText += (" " + symbol);
@@ -57,37 +59,35 @@ function operatorClickEvent(event) {
 }
 
 function equalsClickEvent() {
+    // An error will be displayed instead of evaluating the input
     if(willError) {
         clearValues();
         inputDisplay.innerText = "ERROR";
     }
-    if(isNegative)
-        total = operation(total, (parseFloat(currentValue) * -1));
-    else
+    else {
+        // Parse 'currentValue' into a Number and perform the stored operation
         total = operation(total, parseFloat(currentValue));
 
-    if(typeof total == 'number' && !Number.isInteger(total))
-        total = total.toFixed(2);
+        // If the resulting number is a float, round to two decimal places
+        if(typeof total == 'number' && !Number.isInteger(total))
+            total = total.toFixed(2);
 
-    currentValue = "";
-    operation = null;
+        currentValue = "";
+        operation = null;
 
-    inputDisplay.innerText = total;
+        inputDisplay.innerText = clearValues();
+    }
 }
 
+/*
+  Resets all data to start again. Returns the current total if required.
+*/
 function clearValues() {
+    let toReturn = total;
     total = 0;
     currentValue = "";
     operation = null;
     inputDisplay.innerText = "";
     willError = false;
+    return toReturn;
 }
-
-function logdetails() {
-    console.log("------------------------")
-    console.log(`total: ${total} (${typeof total})`)
-    console.log(`currentValue: ${currentValue} (${typeof currentValue})`)
-    console.log(`currentFunc: ${operation}`)
-    console.log(`willError: ${willError}`);
-}
-

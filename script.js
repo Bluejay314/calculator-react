@@ -1,7 +1,7 @@
 let total = 0;
-let isNegative = false;
 let currentValue = "";
 let currentFunc = null;
+let isNegative = false;
 const inputDisplay = document.getElementById("input-display");
 
 document.querySelectorAll(".number").forEach(e => e.addEventListener("click", numberClickEvent))
@@ -10,17 +10,12 @@ document.querySelector("#equals").addEventListener("click", equalsClickEvent);
 document.querySelector("#clear").addEventListener("click", clearValues);
 
 function numberClickEvent(event) {
-    // currentValue += event.target.innerText;
-    // inputDisplay.innerText = currentValue;
     inputDisplay.innerText += " " + event.target.innerText;
     currentValue += event.target.innerText;
     logdetails();
 }
 
 function operatorClickEvent(event) {
-    if(currentValue.length != 0 && total != 0)
-        calculate();
-
     switch(event.target.innerText) {
         case "+":
             if(currentValue.length != 0 && !currentFunc) {
@@ -47,15 +42,26 @@ function operatorClickEvent(event) {
 }
 
 function equalsClickEvent() {
-    calculate();
+    if(isNegative)
+    total = currentFunc(parseFloat(total), (parseFloat(currentValue) * -1));
+    else
+    total = currentFunc(parseFloat(total), parseFloat(currentValue));
+
+    if(typeof total == 'number' && !Number.isInteger(total))
+        total = total.toFixed(2);
+
+    console.log(`typeof total: ${typeof total}`);
+    console.log(`typeof currentValue: ${typeof currentValue}`);
+
+    currentValue = "";
+    currentFunc = null;
+
     inputDisplay.innerText = total;
+    logdetails();
 }
 
 function calculate() {
-    total = currentFunc(parseFloat(total), isNegative? parseFloat(currentValue) * -1 : parseFloat(currentValue));
-    currentValue = "";
-    currentFunc = null;
-    logdetails();
+   
 }
 
 function clearValues() {

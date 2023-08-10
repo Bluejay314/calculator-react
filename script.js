@@ -45,6 +45,14 @@ function operatorClickEvent(event) {
                 inputDisplay.innerText += (" x");
             }
             break;
+        case "/":
+            if(currentValue.length != 0 && !currentFunc) {
+                currentFunc = (a, b) => a / b;
+                total = currentValue;
+                currentValue = "";
+                inputDisplay.innerText += (" /");
+            }
+            break;
     }
     logdetails();
 }

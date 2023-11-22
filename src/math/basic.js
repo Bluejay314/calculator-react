@@ -23,7 +23,7 @@ const operators = {
   neighboring, are ignored.
 */
 function findBrackets(input) {
-    console.log(`   FINDING BRACKETS IN | ${input}`)
+    console.log(`   FINDING BRACKETS IN: ${input}`)
     // Position of bracket open and close
     let bracketOpen, bracketClose;
 
@@ -60,10 +60,10 @@ function findBrackets(input) {
   the position of the operator in the array for slicing purposes.
 */
 function findOperator(input) {
-    console.log(`   FINDING OPERATOR IN | ${input}`);
+    console.log(`   FINDING OPERATOR IN: ${input}`);
     // Checks for addition and subtraction first. This is because the recursive
     // design will perform these last.
-    for(let i in input) {
+    for(let i = 0; i < input.length; i ++) {
         if(input[i] === operators.add.symbol) {
             console.log(`   found ${input[i]} at pos ${i}. returning function: ${operators.add.action}`);
             return [operators.add.action, i];
@@ -141,7 +141,6 @@ function solve(exp) {
     const [operation, position] = findOperator(exp);
     let left = exp.slice(0, position);
     let right = exp.slice(position + 1);
-
     console.log(`performing ${operation} on: ${left}  and  ${right}`);
 
     return operation(solve(left), solve(right));

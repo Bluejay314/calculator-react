@@ -8,7 +8,7 @@ import calculate from "../math/basic";
 const buttonSequence = [".", "/", "x", "-", "+", 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, "(", ")","clear", "="];
 
 export default function Calculator() {
-    const [content, setContent] = useState("(6 - 2) x (1 + 2)");
+    const [content, setContent] = useState("");
 
     const handleClick = (value) => {
         // If equals pressed, calculate the input and display

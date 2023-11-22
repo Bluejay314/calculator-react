@@ -1,0 +1,20 @@
+.CalcButton {
+    padding: 0.5rem 0;
+    color: var(--color-tertiary);
+    background-color: var(---color-secondary);
+    border: 0.1rem solid #9D9A9A;
+    border-radius: 0.75rem;
+    caret-color: transparent;
+    box-shadow: -1px 4px 5px 2px rgba(49, 49, 49, 0.409);
+    text-align: center;
+}
+
+.CalcButton:hover {
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.CalcButton:active {
+    transform: translateY(0.2rem);
+    box-shadow: none;
+}

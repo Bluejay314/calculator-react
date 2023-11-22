@@ -1,9 +1,8 @@
-# Lab - Let’s create a calculator
-Basic calculator app for adding, subtracting, multiplying and dividing two numbers. 
+# React + Vite
 
-## Figma
-Link to the Figma project:
-https://www.figma.com/file/sKTkxXq4oDbBUf0JZSdNNW/Untitled?type=design&mode=design&t=5uFMo2R7dzHqXt6I-1
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Flow Diagram
-For the flow diagram, I was unsure if I used appropriate states and transitions. This is mainly due to the scope of the app to be quite small.
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

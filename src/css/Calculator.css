@@ -1,0 +1,19 @@
+.Calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 1.25em;
+    border: 0.5rem solid gray;
+    border-radius: 1em;
+    background-color: var(--color-primary);
+}
+
+.Calculator-button-container {
+    display: grid;
+    grid-template-columns: repeat(5, 3rem);
+    grid-template-rows: repeat(4, 3rem);
+    justify-items: stretch;
+    gap: var(--button-gap);
+    margin-top: 1.5rem;
+}

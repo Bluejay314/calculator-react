@@ -1,0 +1,17 @@
+:root {
+  --color-primary: #898989;
+  ---color-secondary: #546886;
+  --color-tertiary: #80EFF6;
+  --button-gap: 0.5rem;
+
+  font-size: 24px;
+  font-weight: bold;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}

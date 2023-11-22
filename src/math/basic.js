@@ -92,19 +92,27 @@ function findOperator(input) {
 
 /*
   Main function that formats a string input for ease of calculation. Its
-  main role is to calland return the recursive function 'solve'.
+  main role is to call and return the recursive function 'solve'.
 */
 function calculate(input) {
     console.log(`input: ${input}`)
+    const toSolve = sanitize(input);
+    console.log(`formatted input: ${exp}`)
+    return solve(exp);
+}
+
+/*
+    Utility function to format the starting expression string to minimise errors.
+*/
+function sanitize(input) {
     let exp = input.replace(/\(/g, "( "); // Add a space after all opening brackets
     exp = exp.replace(/\)/g, " )");       // Add a space before all closing brackets
     exp = exp.replace(/\s+/g, ' ');       // All whitespace should be a single space
     exp = exp.trim();                     // Allows the first number to be negative
     exp = exp.split(" ");                 // Convert to an array for ease of operation
-    console.log(`formatted input: ${exp}`)
-    return solve(exp);
-}
 
+    return exp;
+}
 
 function solve(exp) {
     if(exp.length < 1) {
